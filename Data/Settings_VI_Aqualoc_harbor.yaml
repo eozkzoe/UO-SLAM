@@ -1,12 +1,12 @@
 %YAML:1.0
 
 # Path to save tmp files/results
-test.InitVIOTmpPath: "/home/chinthaka/ORB_SLAM/temp_files/"
+test.InitVIOTmpPath: "/home/eozk/ORB_SLAM/temp_files/"
 
 ## For good initialization (no movement at the beginning for some bag)
 test.DiscardTime: 0
 
-bagfile: "/home/chinthaka/harbor_sequence_1.bag"
+bagfile: "/home/eozk/Downloads/bag_files/harbor_sequence_1.bag"
 imutopic: "/rtimulib_node/imu"
 imagetopic: "/camera/image_raw"
 depthtopic: "/barometer_node/depth"

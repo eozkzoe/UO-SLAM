@@ -75,20 +75,31 @@ int main(int argc, char **argv)
     if (argc ==3){
     // Load Settings and Check
     strSettingsFile = ros::package::getPath("USLAM")+"/"+argv[2];
-    std::cout<<strSettingsFile<<std::endl;
     }
     else{
     //strSettingsFile = "/home/chinthaka/USLAM/Data/Settings.yaml";
     //strSettingsFile = "/home/chinthaka/USLAM/Data/euroc.yaml";
     //strSettingsFile = "/home/chinthaka/USLAM/Data/Settings_VI_Aqualoc_archiological.yaml";
-    strSettingsFile = "/home/chinthaka/USLAM/Data/Settings_VI_Aqualoc_harbor.yaml"; // User can give the setting file in here or as an argument with the rosrun
+    strSettingsFile = "/home/eozk/USLAM/Data/Settings_VI_Aqualoc_harbor.yaml"; // User can give the setting file in here or as an argument with the rosrun
     }
+    std::cout<<strSettingsFile<<std::endl;
 
     
-    cv::FileStorage fsSettings(strSettingsFile, cv::FileStorage::READ);
+    // cv::FileStorage fsSettings;
+    // try{
+    //     fsSettings.open(strSettingsFile, cv::FileStorage::READ);
+    // }
+    // catch(cv::Exception ex){
+    //     ROS_ERROR("%s", ex.what());
+    //     ROS_ERROR("Wrong path to settings file. Path must be absolute or relative to USLAM package directory.");
+    //     ros::shutdown();
+    //     return 0;
+    // }
+    // cv::FileStorage fsSettings = cv::FileStorage(strSettingsFile, cv::FileStorage::READ);
+    cv::FileStorage fsSettings(strSettingsFile, cv::FileStorage::READ | cv::FileStorage::FORMAT_YAML);
     if(!fsSettings.isOpened())
     {
-        ROS_ERROR("Wrong path to settings file. Path must be absolut or relative to USLAM package directory.");
+        ROS_ERROR("Wrong path to settings file. Path must be absolute or relative to USLAM package directory.");
         ros::shutdown();
         return 1;
     }
@@ -103,7 +114,7 @@ int main(int argc, char **argv)
     }
     else{
     //strVocFile = "/home/chinthaka/USLAM/Data/ORBvoc.txt";  
-    strVocFile = "/home/chinthaka/USLAM/Data/ORBvoc.txt";//hard code vocubulary path,
+    strVocFile = "/home/eozk/USLAM/Data/ORBvoc.txt";//hard code vocubulary path,
     }
     cout << endl << "Loading ORB Vocabulary. This could take a while." << endl;
     

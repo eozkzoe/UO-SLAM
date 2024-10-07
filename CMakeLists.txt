@@ -39,8 +39,9 @@ endif()
 
 LIST(APPEND CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake_modules)
 
-find_package(OpenCV REQUIRED)
-find_package(Eigen3 REQUIRED)
+find_package(OpenCV 4 REQUIRED)
+list(APPEND CMAKE_INCLUDE_PATH "/usr/local/include") 
+find_package (Eigen3 3.3 REQUIRED NO_MODULE)
 find_package(Pangolin REQUIRED)
 find_package(Cholmod REQUIRED)
 find_package(rosbag REQUIRED)
@@ -98,6 +99,9 @@ rosbuild_link_boost(${PROJECT_NAME} thread)
 
 target_link_libraries(${PROJECT_NAME}
 ${OpenCV_LIBS}
+-lopencv_imgproc
+-lopencv_imgcodecs
+-lopencv_core
 ${EIGEN3_LIBS}
 ${Pangolin_LIBRARIES}
 ${rosbag_LIBRARIES}

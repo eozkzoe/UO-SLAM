@@ -32,15 +32,10 @@ cmake .. -DROS_BUILD_TYPE=Release
 doesnt work, run this instead:
 cmake .. -DROS_BUILD_TYPE=Release -DPYTHON_EXECUTABLE=/usr/bin/python3 -DPYTHON_INCLUDE_DIR=/usr/include/python3.8
 
--DCMAKE_INSTALL_PREFIX=/usr/local
-
-
-for U-VIP-SLAM include .h files:
 change all instances of
 #include <opencv/cv.h>
 to
 #include <opencv2/opencv.hpp>
-
 
 for error 'cv_filled' was not declared in this scope: OpenCV4 is unsupported
 either downgrade to Opencv3.4.6:
